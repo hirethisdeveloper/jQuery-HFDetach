@@ -1,0 +1,46 @@
+Project: jQuery HFDetach
+Author: Phil Pastorek, HireThisDeveloper.com
+Date: 2011-09-15
+Version: 1.0
+
+Given the html structure for example(does not need to be like this, this is just an example):
+
+
+
+<div class="footer">
+  <div class="footerbar ">
+    <div class="footerbarinner ">
+      <div class="footer_links"> 
+  	<a href="#">some links here that will fix to the bottom of the window</a> | <a href="#">some links here</a> | <a href="#">some links here</a>
+      </div>	
+    </div>
+  </div>
+  <div class="footercontent bmargin-50">
+    <div class="footercontentinner">
+      <p>Some static footer content that stays at the bottom.</p>	
+    </div>
+  </div>
+</div>
+
+
+calling ----------------------------
+
+<script type="text/javascript">
+$(function() {
+	$("div.footer").hfdetach({
+		'opt_obj': $("div.footerbar"),
+		'zindex': 500
+	});
+});
+</script>
+
+------------------------------------
+
+Will detach div.footerbar from the dom, and place it in a CSS position:fixed; bottom:0px; that will remain until you scroll down to where footerbar would have resided on the page if not position:fixed. Once you reach the "threshold" place which is the place where the footerbar would have normally been displayed with out the script, it will automatically reattach itself there until/unless you scroll back up which will automatically detach it again and fix it to the window bottom.
+
+Note: although the script is called HFDetach, which stands for Header/Footer Detach, I've only used it for footers, but in theory it would work for any object.
+
+
+
+
+
